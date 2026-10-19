@@ -24,8 +24,21 @@ img{
     height: 200px;
 }
 
-nav{
+body{
+  font-family: var(--font);
+}
+
+nav,
+footer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: var(--primary);
+    padding: 16px;
+    align-items: center;
+    color: var(--bg);
+}
+
+.card{
+  cursor: pointer;
 }
