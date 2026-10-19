@@ -27,9 +27,12 @@ img{
 body{
   font-family: var(--font);
 }
-
+footer{
+  margin-top: 5%;
+}
 nav,
 footer{
+    
     display: flex;
     flex-direction: row;
     justify-content: space-around;
