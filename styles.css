@@ -9,19 +9,30 @@
 }
 
 .galeria {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .galeria {
+    grid-template-columns: repeat(6,1fr);
+  }
+}
+
+img{
+    width: 200px;
+    height: 200px;
 }
 
 body{
   font-family: var(--font);
 }
-
+footer{
+  margin-top: 5%;
+}
 nav,
 footer{
+    
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -32,55 +43,43 @@ footer{
 }
 
 .card{
-  position: relative;
   cursor: pointer;
-  width: 220px;
-  height: 270px;
-  border: 2px solid var(--primary);
-  border-radius: 12px;
-  background-color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
-  overflow: hidden;
 }
+
+.card {
+  width: 140px;
+  height: 180px;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 5%;
+}
+
 
 .card-frente,
-.card-dorso{
-  position: absolute;
-  inset: 0;
+.card-dorso {
   width: 100%;
   height: 100%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  backface-visibility: hidden; 
+  transition: transform 0.6s ease; 
 }
 
-.card-frente{
-  display: none;
-  background-color: var(--primary);
-  color: white;
+.card-frente {
+  transform: rotateY(0deg);
 }
 
-.card-dorso{
-  display: flex;
-  background-color: var(--primary);
-  color: white;
+.card-dorso {
+  transform: rotateY(180deg);
 }
 
-.card-frente h2{
-  font-size: 4rem;
+.card.volteada .card-frente {
+  transform: rotateY(180deg);
 }
 
-.card-dorso img{
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
+.card.volteada .card-dorso {
+  transform: rotateY(0deg);
 }
-
-.card-dorso p{
-  margin-top: 10px;
-  font-weight: 700;
-}
-

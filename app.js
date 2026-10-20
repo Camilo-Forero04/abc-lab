@@ -1,21 +1,19 @@
+const contadorSpan = document.querySelector("#contador");
+let contadorVistas = 0;
 
-var numeroContador = document.getElementById("contador");
+function voltear(card) {
+  card.classList.toggle("volteada");
 
-var todasLasCards = document.querySelectorAll(".card");
+  if (!card.classList.contains("vista")) {
+    card.classList.add("vista");
+    contadorVistas = contadorVistas + 1;
+    contadorSpan.textContent = contadorVistas;
+  }
+}
 
-var letrasVistas = 0
-
-for (var i = 0; i < todasLasCards.length; i++) {
-
-    var cardActual = todasLasCards[i];
-    cardActual.addEventListener("click", function () {
-
-        this.classList.toggle("volteada");
-
-        if (!this.classList.contains("vista")) {
-            this.classList.add("vista")
-            letrasVistas = letrasVistas + 1
-            numeroContador.textContent = letrasVistas
-        }
-    })
+const todasLasCards = document.querySelectorAll(".card");
+for (let card of todasLasCards) {
+  card.addEventListener("click", function () {
+    voltear(card);
+  });
 }
